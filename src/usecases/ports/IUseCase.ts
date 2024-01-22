@@ -1,3 +1,3 @@
 export interface IUseCase {
-	execute(repositories: any): Promise<any>;
+	execute(request: any): Promise<any>;
 }

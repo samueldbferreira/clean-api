@@ -11,6 +11,7 @@ const config: Config = {
 		"^@/(.*)$": "<rootDir>/src/$1",
 		"^@tests/(.*)$": "<rootDir>/tests/$1",
 	},
+	setupFiles: ["dotenv/config"],
 };
 
 export default config;

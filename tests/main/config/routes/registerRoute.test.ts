@@ -17,10 +17,10 @@ describe("Register user on mailing list route", () => {
 
 	test("should return 201 after the register", async () => {
 		const response = await request(app).post("/api/register").send({
-			name: "Any Name",
-			email: "any@mail.com",
+			name: "Samuel Ferreira",
+			email: "samueldbferreira@gmail.com",
 		});
 
-		expect(response.statusCode).toEqual(201);
+		expect(response.statusCode).toEqual(200);
 	});
 });

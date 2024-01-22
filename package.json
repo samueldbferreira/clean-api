@@ -9,7 +9,7 @@
 		"test": "jest",
 		"test:unit": "jest /*.spec.ts",
 		"test:integration": "jest /*.test.ts",
-		"dev": "tsx ./src/server.ts --watch"
+		"dev": "node -r dotenv/config ./dist/main/server.js"
 	},
 	"author": "",
 	"license": "ISC",
@@ -18,9 +18,11 @@
 		"@types/express": "^4.17.21",
 		"@types/jest": "^29.5.11",
 		"@types/node": "^20.10.5",
+		"@types/nodemailer": "^6.4.14",
 		"@types/supertest": "^6.0.2",
 		"@typescript-eslint/eslint-plugin": "^6.15.0",
 		"@typescript-eslint/parser": "^6.15.0",
+		"dotenv": "^16.3.2",
 		"eslint": "^8.56.0",
 		"git-commit-msg-linter": "^5.0.6",
 		"jest": "^29.7.0",
@@ -34,7 +36,8 @@
 	"dependencies": {
 		"express": "^4.18.2",
 		"module-alias": "^2.2.3",
-		"mongodb": "^6.3.0"
+		"mongodb": "^6.3.0",
+		"nodemailer": "^6.9.8"
 	},
 	"_moduleAliases": {
 		"@": "dist"

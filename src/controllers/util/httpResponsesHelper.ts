@@ -1,8 +1,8 @@
 import { IHttpResponse } from "@/controllers/ports";
 
-export function created(bodyContent: any): IHttpResponse {
+export function ok(bodyContent: any): IHttpResponse {
 	return {
-		statusCode: 201,
+		statusCode: 200,
 		body: bodyContent,
 	};
 }

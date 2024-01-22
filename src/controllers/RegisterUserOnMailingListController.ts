@@ -1,14 +1,14 @@
 import { IHttpRequest, IHttpResponse } from "@/controllers/ports";
 import { IUserData } from "@/entities";
-import { badRequest, created, internalServerError } from "@/controllers/util";
+import { badRequest, internalServerError, ok } from "@/controllers/util";
 import { InternalServerError, MissingParamError } from "@/controllers/errors";
 import { IUseCase } from "@/usecases/ports";
 
 export class RegisterUserOnMailingListController {
-	private readonly registerUserOnMailingListUseCase: IUseCase;
+	private readonly registerAndEmailUser: IUseCase;
 
 	constructor(usecase: IUseCase) {
-		this.registerUserOnMailingListUseCase = usecase;
+		this.registerAndEmailUser = usecase;
 	}
 
 	public async handle(request: IHttpRequest): Promise<IHttpResponse> {
@@ -23,13 +23,15 @@ export class RegisterUserOnMailingListController {
 
 			const userData: IUserData = request.body;
 
-			const useCaseResponse =
-				await this.registerUserOnMailingListUseCase.execute(userData);
+			const useCaseResponse = await this.registerAndEmailUser.execute(
+				userData
+			);
+
 			if (useCaseResponse.isLeft()) {
 				return badRequest(useCaseResponse.value);
 			}
 
-			return created(useCaseResponse.value);
+			return ok(useCaseResponse.value);
 		} catch (e) {
 			return internalServerError(new InternalServerError());
 		}
